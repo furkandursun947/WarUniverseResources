@@ -1,14 +1,11 @@
 const mongoose = require('mongoose');
-
+const autoIncrement = require("mongoose-auto-increment");
 
 const UserSchema = new mongoose.Schema({
-    _id:{
-        type: mongoose.Types.ObjectId,
-        required: true,
-    },
     nickname: {
         type: String,
-        required: true
+        required: true,
+        unique: true
     },
     password: {
         type: String,
@@ -17,12 +14,21 @@ const UserSchema = new mongoose.Schema({
     },
     email: {
         type: String,
-        required: true,
-        minLength: 8,
-        unique: true,
+        unique: true
+    },
+    token: {
+        type: String
     }
 });
 
+
+autoIncrement.initialize(mongoose.connection);
+UserSchema.plugin(autoIncrement.plugin, {
+    model: "User",
+    field: "_id",
+    startAt: 1,
+    incrementBy: 1
+});
 
 const User = mongoose.model('User', UserSchema);
 

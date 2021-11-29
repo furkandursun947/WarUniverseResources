@@ -7,6 +7,8 @@ const { mongoose } = require('./db/mongoose');
 
 const npcRoutes = require('./routes/npcRoutes');
 const scorePVERoutes = require('./routes/scorePVERoutes');
+const userRoutes = require('./routes/userRoutes');
+const authRoutes = require('./routes/authRoutes');
 
 const app = express();
 
@@ -34,7 +36,9 @@ app.use((req, res, next) => {
 
 app.use("/npcs", npcRoutes);
 app.use("/scorePVE", scorePVERoutes);
-
+app.use("/login", authRoutes);
+app.use("/register", authRoutes);
+app.use("/users", userRoutes);
 
 module.exports = app;
 
