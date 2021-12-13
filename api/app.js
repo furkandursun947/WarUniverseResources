@@ -2,13 +2,8 @@ const express = require('express');
 const bodyParser = require('body-parser');
 const { mongoose } = require('./db/mongoose');
 
+const {npcRoutes, scorePVERoutes, userRoutes, authRoutes} = require('./routes');
 
-
-
-const npcRoutes = require('./routes/npcRoutes');
-const scorePVERoutes = require('./routes/scorePVERoutes');
-const userRoutes = require('./routes/userRoutes');
-const authRoutes = require('./routes/authRoutes');
 
 const app = express();
 
