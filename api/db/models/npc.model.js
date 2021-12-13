@@ -38,7 +38,7 @@ const NpcSchema = new mongoose.Schema({
         type: String,
         required: true,
     }
-});
+}, {timestamps: true, versionKey: false});
 
 autoIncrement.initialize(mongoose.connection);
 NpcSchema.plugin(autoIncrement.plugin, {

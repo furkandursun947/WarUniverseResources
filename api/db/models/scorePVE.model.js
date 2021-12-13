@@ -11,30 +11,6 @@ const ScorePVESchema = new mongoose.Schema({
         type: String,
         required: true,
     },
-    oneDayPoint:{
-        type: String,
-        required: true,
-    },
-    oneWeekPoint:{
-        type: String,
-        required: true,
-    },
-    twoWeekPoint:{
-        type: String,
-        required: true,
-    },
-    threeWeekPoint:{
-        type: String,
-        required: true,
-    },
-    fourWeekPoint:{
-        type: String,
-        required: true,
-    },
-    oneMonthPoint:{
-        type: String,
-        required: true,
-    }
 });
 
 autoIncrement.initialize(mongoose.connection);
@@ -43,7 +19,7 @@ ScorePVESchema.plugin(autoIncrement.plugin, {
     field: "_id",
     startAt: 1,
     incrementBy: 1
-});
+}, {timestamps: true, versionKey: false});
 
 const ScorePVE = mongoose.model('ScorePVE', ScorePVESchema);
 
